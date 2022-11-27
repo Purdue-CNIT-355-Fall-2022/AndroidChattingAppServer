@@ -43,6 +43,7 @@ class LocalDatabase {
             while (tempIterator.hasNext()) {
                 try {
                     val tempUser = User(tempIterator.next())
+                    Log.d("USER TABLE", "User" + tempUser.toString() +" added");
                     userTable.add(tempUser)
                 } catch (e: NullPointerException) {
                     continue;
@@ -61,6 +62,7 @@ class LocalDatabase {
                 try {
                     val temp: List<String> = tempIterator.next().split(",")
                     val tempChatroom = ChatRoom(temp[0], temp[1], User(temp[2]), User(temp[3]))
+                    Log.d("CHAT ROOM TABLE", "User" + tempChatroom.toString() +" added");
                     chatRoomTable.add(tempChatroom)
                 } catch (e: NullPointerException) {
                     continue
@@ -79,6 +81,7 @@ class LocalDatabase {
                 try {
                     val temp: List<String> = tempIterator.next().split(",")
                     val tempChat = Chat(temp[0], temp[1], User(temp[2]), User(temp[3]), temp[4].toLong(), temp[5])
+                    Log.d("CHAT TABLE", "User" + tempChat.toString() +" added");
                     chatTable.add(tempChat)
                 } catch (e: NullPointerException) {
                     continue
@@ -146,7 +149,7 @@ class LocalDatabase {
             val sb = StringBuilder()
 
             for (user in userTable) {
-                sb.append(user.toString()).append("\n")
+                sb.append(user.userName).append("\n")
             }
             bw.write(sb.toString())
             bw.close()
