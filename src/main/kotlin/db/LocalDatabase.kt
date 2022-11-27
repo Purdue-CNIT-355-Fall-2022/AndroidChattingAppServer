@@ -137,6 +137,7 @@ class LocalDatabase {
         if (!chatRoomTable.contains(chatRoom)) {
             chatRoomTable.add(chatRoom)
         }
+        Log.d("ChatRoomTable", "Size: ${chatRoomTable.size}")
     }
 
     fun addChat(chat: Chat) {
@@ -152,6 +153,7 @@ class LocalDatabase {
                 sb.append(user.userName).append("\n")
             }
             bw.write(sb.toString())
+            bw.flush()
             bw.close()
             true
         } catch (e: IOException) {
@@ -166,9 +168,12 @@ class LocalDatabase {
             val sb = StringBuilder()
 
             for (chatRoom in chatRoomTable) {
+                Log.d("ChatRoomTable", "$chatRoom")
                 sb.append(chatRoom.toString()).append("\n")
             }
+
             bw.write(sb.toString())
+            bw.flush()
             bw.close()
             true
         } catch (e: IOException) {
@@ -186,6 +191,7 @@ class LocalDatabase {
                 sb.append(chat.toString()).append("\n")
             }
             bw.write(sb.toString())
+            bw.flush()
             bw.close()
             true
         } catch (e: IOException) {
@@ -195,6 +201,7 @@ class LocalDatabase {
     }
 
     fun notifyAllChanges() : Boolean {
+        Log.d("Notify", "Notify all changes")
         if (!notifyUserTableChanged()) {
             return false
         }

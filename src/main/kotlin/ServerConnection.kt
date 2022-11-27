@@ -71,6 +71,7 @@ class ServerConnection {
                                         mWriter.reset()
                                         mWriter.writeObject(newUser)
                                         mWriter.flush()
+                                        database.addUser(newUser)
                                         database.notifyAllChanges()
                                     }
                                 }
@@ -112,6 +113,7 @@ class ServerConnection {
                                     val user1 = database.findUser(currentReq[2])
                                     val user2 = database.findUser(currentReq[3])
                                     val newChatRoom = ChatRoom(currentReq[1], user1, user2)
+                                    database.addChatRoom(newChatRoom)
                                     database.notifyAllChanges()
                                 }
                                 "ADD_C" -> {
@@ -120,6 +122,7 @@ class ServerConnection {
                                     val sender = database.findUser(currentReq[2])
                                     val receiver = database.findUser(currentReq[3])
                                     val newChat = Chat(currentReq[1], sender, receiver, currentReq[4])
+                                    database.addChat(newChat)
                                     database.notifyAllChanges()
                                 }
                             }
