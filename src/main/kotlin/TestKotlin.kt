@@ -1,10 +1,17 @@
 // create main function
 fun main(args: Array<String>) {
 
-    val name = "Doyoon"
+    val a = ArrayList<String>()
+    a.add("a")
+    a.add("b")
+    a.add("c")
+    a.add("d")
 
-    // Get Greeting
-    val greetingMessage = TestJava().getGreetingString(name);
+    val b = ArrayList<String>()
+    b.add("a")
+    b.add("b")
+    b.add("f")
+    b.add("d")
 
-    println(greetingMessage)
+    println("${a.equals(b)}")
 }

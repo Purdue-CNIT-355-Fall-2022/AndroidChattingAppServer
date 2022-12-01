@@ -63,4 +63,14 @@ public class Chat implements Serializable {
                 chatRoomId, chatId, sender.getUserName(), receiver.getUserName(), sendDate.getTime(),  msg
         );
     }
+
+    @Override
+    public boolean equals(Object target) {
+        if (this == target) {
+            return true;
+        } else {
+            Chat temp = (Chat) target;
+            return this.getChatId().equals(temp.chatId);
+        }
+    }
 }
